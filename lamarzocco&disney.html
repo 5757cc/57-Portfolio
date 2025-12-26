@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - La Marzocco & Disney</title>
+    <link rel="stylesheet" href="lamarzocco&disney.css">
+</head>
+<body>
+
+    <nav class="tab-bar">
+        <ul>
+            <li><a href="index.html" class="tab"><div class="nav---link-bg-square"></div>WORKS</a></li>
+            <li><a href="About.html" class="tab"><div class="nav---link-bg-square"></div>ABOUT</a></li>
+            <li><a href="contact.html" class="tab"><div class="nav---link-bg-square"></div>CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <main class="content-wrapper">
+        <div class="hero-image-container">
+            <img src="img/lamarzocco&disney_1.jpg" alt="La Marzocco & Disney Project" class="full-img">
+        </div>
+        
+        <div class="marquee-bar">
+            <div class="marquee-inner">
+                <span class="marquee-text">La Marzocco & Disney &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; La Marzocco & Disney &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; La Marzocco & Disney &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span class="marquee-text">La Marzocco & Disney &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; La Marzocco & Disney &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; La Marzocco & Disney &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <img src="img/lamarzocco&disney_2.png" alt="Detail 1" class="scaled-img img-2">
+            <img src="img/lamarzocco&disney_3.png" alt="Detail 2" class="scaled-img img-3">
+            
+            <div class="description-text" id="reveal-text">
+                <p>整體咖啡機大多以金屬的材質呈現復古感，提到迪士尼都會想到歡樂的元素，因此在泡咖啡等待時，可以播放音樂，米奇耳朵部分是音響，開關則設計成復古拉桿的樣式，頭部上方凹槽的地方的放置物品或手機。</p>
+            </div>
+        </div>
+    </main>
+
+    <section class="ui-design-section">
+        <div class="next-proj-wrap">
+            <a href="26cookies+bauhaus.html">
+                <img src="img/Next Project.png" alt="Next Project" class="next-btn">
+            </a>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const textElement = document.getElementById('reveal-text');
+            const content = textElement.innerText;
+            textElement.innerHTML = ''; 
+
+            // 將文字分割為較長的段落以模擬「行」
+            const lines = content.match(/.{1,35}/g); 
+            lines.forEach((line, index) => {
+                const span = document.createElement('span');
+                span.classList.add('line');
+                span.innerText = line;
+                span.style.transitionDelay = `${index * 0.25}s`;
+                textElement.appendChild(span);
+                textElement.appendChild(document.createElement('br'));
+            });
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            observer.observe(textElement);
+        });
+    </script>
+</body>
+</html>

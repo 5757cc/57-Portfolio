@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - About</title>
+    <link rel="stylesheet" href="about.css">
+</head>
+<body>
+
+    <nav class="tab-bar">
+        <ul>
+            <li>
+                <a href="index.html" class="tab">
+                    <div class="nav---link-bg-square"></div>
+                    WORKS
+                </a>
+            </li>
+            <li>
+                <a href="About.html" class="tab">
+                    <div class="nav---link-bg-square"></div>
+                    ABOUT
+                </a>
+            </li>
+            <li>
+                <a href="contact.html" class="tab">
+                    <div class="nav---link-bg-square"></div>
+                    CONTACT
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="content-wrapper">
+        <div class="img-container-1">
+            <img src="img/about_1.png" alt="About Image 1" class="about-1-img">
+        </div>
+
+        <section class="black-section">
+            <img src="img/about_2.png" alt="About Image 2" class="pop-img" id="target-img">
+        </section>
+
+        <h2 class="skills-title">Skills</h2>
+
+        <div class="img-container-3">
+            <img src="img/about_3.png" alt="About Image 3" class="about-3-img">
+        </div>
+    </main>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const target = document.getElementById('target-img');
+        if (target) observer.observe(target);
+    </script>
+</body>
+</html>

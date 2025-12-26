@@ -1,0 +1,166 @@
+/* --- 基礎樣式與導航欄 (保持不動) --- */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background-color: #f8f8f8;
+}
+
+.tab-bar {
+    position: fixed; /* 改為 fixed 確保內容居中計算準確 */
+    top: 0;
+    width: 100%;
+    background: transparent;
+    padding: 1em 0;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.tab-bar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.tab-bar ul li { margin: 0 1em; position: relative; }
+
+.tab-bar ul li a {
+    position: relative; 
+    overflow: hidden;
+    color: rgb(49, 49, 49);
+    text-decoration: none;
+    padding: 0.5em 1em;
+    z-index: 2;
+    display: block;
+    transition: color 0.3s;
+}
+
+.nav---link-bg-square {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(238, 212, 165);
+    transform: translate3d(-50%, -50%, 0) scale3d(0, 0, 1) rotateZ(0deg);
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    z-index: 1;
+}
+
+.tab-bar ul li a:hover .nav---link-bg-square {
+    transform: translate3d(-50%, -50%, 0) scale3d(1.2, 1.2, 1) rotateZ(10deg);
+    background-color: #ff7f5f80;
+}
+
+.tab-bar ul li a:active .nav---link-bg-square {
+    transform: translate3d(-50%, -50%, 0) scale3d(1, 1, 1) rotateZ(0deg);
+    background-color: #f9c0b191;
+}
+
+/* --- 新增：置中容器 --- */
+.page-wrapper {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center;     /* 垂直居中 */
+    min-height: 100vh;       /* 滿版高度 */
+    width: 100%;
+}
+
+.content-container {
+    /* 除了 Tab Bar 以外，字體全部改為 SF Pro */
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+    color: #313131;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* 內容靠左對齊，但整體在螢幕中間 */
+}
+
+/* 1. Hi, I'm 57 區塊 */
+.intro-group {
+    display: flex;
+    align-items: flex-end;
+}
+
+.title-hi {
+    font-size: 40px;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.emoji-wrapper {
+    margin-left: 16px;
+    font-size: 64px;
+    color: #FF9079;
+    display: flex;
+    align-items: center;
+}
+
+/* 花朵旋轉動畫 */
+.rotating-flower {
+    display: inline-block;
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* 2. Contact Me 區塊 (往下 110px) */
+.contact-group {
+    margin-top: 110px;
+}
+
+.contact-headline {
+    font-size: 64px;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* 3. Email 區塊 (原 20px + 要求再移下 14px = 共 34px) */
+.email-container {
+    margin-top: 34px; 
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+#target-email {
+    font-size: 32px; /* 放大字級 */
+    font-weight: 400;
+    transition: color 0.3s;
+}
+
+/* Copy 矩形彈出效果 (64x40px) */
+.copy-tooltip {
+    position: absolute;
+    top: -55px;
+    left: 0;
+    width: 64px;
+    height: 40px;
+    background-color: #FF9079;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.email-container:hover #target-email {
+    color: #FF9079;
+}
+
+.email-container:hover .copy-tooltip {
+    opacity: 1;
+    visibility: visible;
+    top: -50px;
+}

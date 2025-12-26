@@ -1,0 +1,175 @@
+/* ======================
+    字體導入
+====================== */
+@font-face {
+    font-family: 'ChironHeiHK';
+    src: url('Fonts/ChironHeiHK-Text-L.otf') format('opentype');
+}
+
+/* ======================
+    基礎設定
+====================== */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ======================
+    導航欄 (Tab Bar)
+====================== */
+.tab-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: transparent;
+    padding: 1em 0;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.tab-bar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.tab-bar ul li {
+    margin: 0 1em;
+    position: relative;
+}
+
+.tab-bar ul li a {
+    position: relative; 
+    overflow: hidden;
+    color: rgb(49, 49, 49);
+    text-decoration: none;
+    padding: 0.5em 1em;
+    z-index: 2;
+    display: block;
+    transition: color 0.3s;
+}
+
+.nav---link-bg-square {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(238, 212, 165);
+    transform: translate3d(-50%, -50%, 0) scale3d(0, 0, 1) rotateZ(0deg);
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    z-index: 1;
+}
+
+.tab-bar ul li a:hover .nav---link-bg-square {
+    transform: translate3d(-50%, -50%, 0) scale3d(1.2, 1.2, 1) rotateZ(10deg);
+    background-color: #ff7f5f80;
+}
+
+/* ======================
+    內容排版
+====================== */
+.content-wrapper {
+    margin-top: 80px;
+}
+
+.full-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.no-gap {
+    margin-bottom: 0;
+}
+
+/* 重疊容器設定 */
+.overlap-container {
+    position: relative;
+    width: 100%;
+}
+
+/* 文字共用設定 */
+.reveal-text {
+    font-family: 'ChironHeiHK', sans-serif;
+    color: black;
+    line-height: 1.8;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+    z-index: 5;
+}
+
+.reveal-text.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 第1段文字：重疊於 dailynecessities_2.png */
+.text-block-1 {
+    position: absolute;
+    top: 132px;
+    left: 156px;
+    width: 390px;
+}
+
+/* 第2段文字：重疊於 dailynecessities_4.png */
+.text-block-2 {
+    position: absolute;
+    top: 590px;
+    left: 210px;
+    width: 524px;
+}
+
+/* 第3段文字：重疊於 dailynecessities_5.png */
+.pill-section {
+    position: relative;
+    width: 100%;
+}
+
+.text-block-3 {
+    position: absolute;
+    top: 316px;
+    right: 54px;
+    width: 390px;
+}
+
+/* ======================
+    底部 Next Project
+====================== */
+.ui-design-section {
+    width: 100%;
+    padding-top: 80px; /* 離上一張圖(dailynecessities_5) 80px */
+    padding-bottom: 80px; 
+}
+
+.next-proj-wrap {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 80px; 
+}
+
+.next-btn {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.next-btn:hover {
+    transform: translateX(5px);
+}
+
+/* 響應式微調 */
+@media (max-width: 1024px) {
+    .text-block-1, .text-block-2, .text-block-3 {
+        width: 80% !important;
+        left: 10% !important;
+        right: auto !important;
+        top: 20px !important; /* 手機版避免重疊太深，改為靠上顯示 */
+    }
+}

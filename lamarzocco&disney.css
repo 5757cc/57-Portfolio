@@ -1,0 +1,93 @@
+/* --- 載入指定字體 --- */
+@font-face {
+    font-family: 'ChironHeiHK-Text-L';
+    src: url('Fonts/ChironHeiHK-Text-L.otf') format('opentype');
+}
+
+/* ====================== 基礎設定 ====================== */
+body, html { margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f8f8f8; overflow-x: hidden; }
+
+/* ====================== 導航欄 ====================== */
+.tab-bar { position: fixed; top: 0; width: 100%; background: transparent; padding: 1em 0; z-index: 1000; }
+.tab-bar ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; }
+.tab-bar ul li { margin: 0 1em; position: relative; }
+.tab-bar ul li a { position: relative; overflow: hidden; color: rgb(49, 49, 49); text-decoration: none; padding: 0.5em 1em; z-index: 2; display: block; }
+.nav---link-bg-square { position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; background-color: rgb(238, 212, 165); transform: translate3d(-50%, -50%, 0) scale3d(0, 0, 1) rotateZ(0deg); transition: transform 0.3s ease; z-index: 1; }
+.tab-bar ul li a:hover .nav---link-bg-square { transform: translate3d(-50%, -50%, 0) scale3d(1.2, 1.2, 1) rotateZ(10deg); background-color: #ff7f5f80; }
+
+/* ====================== 內容區塊 ====================== */
+.content-wrapper { margin-top: 64px; width: 100%; }
+.hero-image-container { width: 100%; line-height: 0; }
+.full-img { width: 100%; height: auto; display: block; }
+
+/* 跑馬燈 */
+.marquee-bar { width: 100%; height: 100px; background-color: #000; overflow: hidden; display: flex; align-items: center; white-space: nowrap; }
+.marquee-inner { display: inline-block; animation: marquee-loop 20s linear infinite; }
+.marquee-text { font-family: "SR pro", sans-serif; font-size: 32px; color: #fff; font-weight: 100; letter-spacing: 1.2px; opacity: 0.95; }
+@keyframes marquee-loop { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* 詳解區塊 */
+.detail-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.scaled-img {
+    width: 70%; 
+    max-width: 1000px;
+    height: auto;
+    display: block;
+}
+
+.img-2 { margin-top: 60px; }
+.img-3 { margin-top: 40px; }
+
+/* 文字區塊：往左偏移調整 */
+.description-text {
+    width: 778px; 
+    margin-top: 60px;
+    margin-bottom: 80px; 
+    font-family: 'ChironHeiHK-Text-L', sans-serif;
+    font-size: 16px;
+    line-height: 2.2;
+    color: #313131;
+    text-align: left;
+    
+    /* 這裡透過 margin 控制水平位置 */
+    /* 若要「再往左一些」，可以減少左側 margin 或使用 translateX */
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateX(-110px); /* 數值越大，文字越往左移 */
+}
+
+/* 一行一行出現動畫 */
+.description-text .line {
+    opacity: 0;
+    transform: translateY(20px);
+    display: inline-block;
+    transition: all 0.8s ease-out;
+}
+
+.description-text.active .line {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ====================== 底部按鈕 ====================== */
+.ui-design-section { width: 100%; }
+.next-proj-wrap {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 80px;
+    padding-bottom: 80px;
+}
+.next-btn { cursor: pointer; transition: 0.3s; }
+.next-btn:hover { transform: translateX(5px); }
+
+@media (max-width: 1024px) {
+    .description-text { width: 90%; transform: none; }
+    .scaled-img { width: 90%; }
+    .next-proj-wrap { padding-right: 20px; }
+}

@@ -1,0 +1,166 @@
+/* ======================
+    基礎設定 (還原原始樣式)
+====================== */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background-color: #f8f8f8;
+    overflow-x: hidden;
+}
+
+/* ======================
+    導航欄 (Tab Bar) 還原
+====================== */
+.tab-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: transparent;
+    padding: 1em 0;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.tab-bar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.tab-bar ul li {
+    margin: 0 1em;
+    position: relative;
+}
+
+.tab-bar ul li a {
+    position: relative; 
+    overflow: hidden;
+    color: rgb(49, 49, 49);
+    text-decoration: none;
+    padding: 0.5em 1em;
+    z-index: 2;
+    display: block;
+    transition: color 0.3s;
+}
+
+.nav---link-bg-square {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(238, 212, 165);
+    transform: translate3d(-50%, -50%, 0) scale3d(0, 0, 1) rotateZ(0deg);
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    z-index: 1;
+}
+
+.tab-bar ul li a:hover .nav---link-bg-square {
+    transform: translate3d(-50%, -50%, 0) scale3d(1.2, 1.2, 1) rotateZ(10deg);
+    background-color: #ff7f5f80;
+}
+
+.tab-bar ul li a:active .nav---link-bg-square {
+    transform: translate3d(-50%, -50%, 0) scale3d(1, 1, 1) rotateZ(0deg);
+    background-color: #f9c0b191;
+}
+
+/* ======================
+    內容佈局與黑色矩形
+====================== */
+.content-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.img-full {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 黑色矩形：第一張圖下方 390px，靠最左 */
+.black-rect {
+    position: relative;
+    margin-top: 390px; 
+    width: 410px;
+    height: 124px;
+    background-color: #000;
+    display: flex;
+    align-items: center;    
+    justify-content: center; 
+    left: 0;
+}
+
+.fade-in-text {
+    color: white;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: left;
+    opacity: 0;
+    animation: fadeInAnimation 2.5s ease-out forwards;
+}
+
+/* 第二張圖：維持在第一張圖下方 140px */
+.img-secondary-wrap {
+    margin-top: calc(-390px - 124px + 140px); 
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    z-index: 5;
+}
+
+.img-half {
+    width: 50%;
+    height: auto;
+}
+
+@keyframes fadeInAnimation {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ======================
+    底部區塊 (Next Project)
+====================== */
+.ui-design-section {
+    width: 100%;
+    padding-bottom: 80px; 
+    display: flex;
+    flex-direction: column;
+    margin-top: 150px; /* 確保與上方內容間距 */
+}
+
+.next-proj-wrap {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 80px;
+    margin-top: 80px; /* 保持 80px 距離 */
+}
+
+.next-btn {
+    cursor: pointer;
+    transition: 0.3s;
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.next-btn:hover {
+    transform: translateX(5px);
+}
+
+/* ======================
+    響應式處理
+====================== */
+@media (max-width: 1024px) {
+    .next-proj-wrap { padding-right: 20px; }
+    .tab-bar ul li { margin: 0 0.5em; }
+    .black-rect { width: 100%; max-width: 410px; }
+}

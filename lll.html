@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>極簡八重螺旋 - 自然分佈</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 3500px; 
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .scroll-hint {
+            position: fixed;
+            bottom: 40px;
+            width: 100%;
+            text-align: center;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: #e5e5e5;
+            letter-spacing: 5px;
+            pointer-events: none;
+            text-transform: uppercase;
+            font-size: 9px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scroll-hint">Organic Distribution</div>
+
+    <script>
+        let numSpirals = 8;
+        let linesPerSpiral = 3;
+        let maxTurns = 1.3;
+        let colors = [];
+        let spirals = []; // 儲存每個螺旋的個性化參數
+
+        function setup() {
+            let canvas = createCanvas(windowWidth, windowHeight);
+            canvas.style('position', 'fixed');
+            canvas.style('top', '0');
+            canvas.style('left', '0');
+            canvas.style('z-index', '-1');
+            noFill();
+            
+            colors = [
+                color('#FF9079'), 
+                color('#FFEB98'), 
+                color('#A0A0A0')
+            ];
+
+            generateOrganicSpirals();
+        }
+
+        // 生成平均但不規則的位置與參數
+        function generateOrganicSpirals() {
+            spirals = [];
+            let attempts = 0;
+            let minDist = min(width, height) * 0.2; // 確保螺旋之間的最短距離
+
+            while (spirals.length < numSpirals && attempts < 500) {
+                let x = random(width * 0.15, width * 0.85);
+                let y = random(height * 0.15, height * 0.85);
+                
+                // 檢查是否太靠近現有的螺旋
+                let tooClose = false;
+                for (let s of spirals) {
+                    if (dist(x, y, s.x, s.y) < minDist) {
+                        tooClose = true;
+                        break;
+                    }
+                }
+
+                if (!tooClose) {
+                    spirals.push({
+                        x: x,
+                        y: y,
+                        size: random(6, 10),       // 隨機的大小感
+                        rotDir: random() > 0.5 ? 1 : -1, // 隨機旋轉方向
+                        startAngle: random(TWO_PI), // 隨機初始角度
+                        speedMult: random(0.8, 1.2) // 隨機旋轉速度感
+                    });
+                }
+                attempts++;
+            }
+        }
+
+        function draw() {
+            background(255); 
+
+            let scrollY = window.scrollY;
+            let maxScroll = document.body.scrollHeight - windowHeight;
+            let progress = constrain(scrollY / maxScroll, 0, 1);
+            let scrollAngle = progress * TWO_PI * maxTurns;
+
+            for (let s of spirals) {
+                push();
+                translate(s.x, s.y);
+                
+                for (let i = 0; i < linesPerSpiral; i++) {
+                    let angleOffset = i * (TWO_PI / linesPerSpiral) + s.startAngle;
+                    
+                    // 1. 底色導引線
+                    drawSpiral(TWO_PI * maxTurns, angleOffset, true, progress, i, s);
+                    // 2. 彩色生長線
+                    drawSpiral(scrollAngle, angleOffset, false, progress, i, s);
+                }
+                pop();
+            }
+        }
+
+        function drawSpiral(totalAngle, offset, isBase, progress, index, config) {
+            beginShape();
+            if (isBase) {
+                strokeWeight(0.5);
+                stroke(248, 248, 248); 
+            } else {
+                let weight = map(progress, 0, 1, 0.6, 2.0);
+                strokeWeight(weight);
+                
+                let colorStep = (index / (linesPerSpiral - 1)) * (colors.length - 1);
+                let startIndex = floor(colorStep);
+                let endIndex = ceil(colorStep);
+                let amt = colorStep - startIndex;
+                
+                let targetColor = lerpColor(colors[startIndex], colors[endIndex], amt);
+                let alpha = map(progress, 0, 1, 30, 180);
+                targetColor.setAlpha(alpha);
+                stroke(targetColor);
+            }
+
+            // config.rotDir 決定順時針或逆時針生長
+            for (let a = 0; a <= totalAngle; a += 0.12) { 
+                let r = a * config.size;
+                let animRotation = isBase ? 0 : (progress * PI * 0.3 * config.rotDir * config.speedMult);
+                
+                let x = cos((a * config.rotDir) + offset + animRotation) * r;
+                let y = sin((a * config.rotDir) + offset + animRotation) * r;
+                
+                curveVertex(x, y);
+            }
+            endShape();
+        }
+
+        function windowResized() {
+            resizeCanvas(windowWidth, windowHeight);
+            generateOrganicSpirals();
+        }
+    </script>
+</body>
+</html>

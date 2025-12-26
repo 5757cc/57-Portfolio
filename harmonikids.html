@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmonikids - Portfolio</title>
+    <link rel="stylesheet" href="harmonikids.css">
+</head>
+<body>
+
+    <nav class="tab-bar">
+        <ul>
+            <li><a href="index.html"><div class="nav---link-bg-square"></div>WORKS</a></li>
+            <li><a href="About.html"><div class="nav---link-bg-square"></div>ABOUT</a></li>
+            <li><a href="contact.html"><div class="nav---link-bg-square"></div>CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero-section">
+        <img src="img/harmonikids_1.jpg" alt="Harmonikids Project" class="main-visual">
+        <div class="sub-visual-group">
+            <img src="img/harmonikids_2.gif" alt="Harmonikids Motion" class="sub-visual gif">
+            <img src="img/harmonikids_3.png" alt="Harmonikids Graphic" class="sub-visual graphic scroll-fade">
+        </div>
+    </section>
+
+    <section class="text-section">
+        <p class="animated-text">
+            HarmoniKids AI兒童音樂探索家，透過數位學習結合AI影像辨識技術，
+            以情境故事與遊玩音符積木，引導孩童在遊戲中探索節奏、音高及樂曲創作，
+            培養基礎音樂素養，提升愉悅的學習體驗。
+        </p>
+    </section>
+
+    <section class="info-section">
+        <div class="title-group">
+            <h2 class="bg-title">Background</h2>
+            <h3 class="bg-subtitle">為什麼做？</h3>
+        </div>
+        <div class="centered-image-container scroll-fade">
+            <img src="img/harmonikids_4.png" alt="Why we do it" class="full-width-img">
+        </div>
+    </section>
+
+    <section class="research-section">
+        <h2 class="res-title">User Interviews</h2>
+        <div class="interview-container">
+            <img src="img/harmonikids_7.png" alt="7" class="bounce-item">
+            <img src="img/harmonikids_8.png" alt="8" class="bounce-item">
+            <img src="img/harmonikids_9.png" alt="9" class="bounce-item">
+            <img src="img/harmonikids_10.png" alt="10" class="bounce-item">
+        </div>
+
+        <h2 class="res-title persona-mt">Persona</h2>
+        <div class="persona-outer">
+            <div class="persona-slider" id="personaSlider">
+                <img src="img/harmonikids_5.png" alt="Persona 1" class="persona-slide-img">
+                <img src="img/harmonikids_6.png" alt="Persona 2" class="persona-slide-img">
+            </div>
+            <div class="indicator-group">
+                <div class="square-dot active" onclick="jumpTo(0)"></div>
+                <div class="square-dot" onclick="jumpTo(1)"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="design-process-section">
+        <div class="label-black-box">Design Process</div>
+        <h2 class="sub-title-center">User Flow</h2>
+        <div class="img-center-wrap">
+            <img src="img/harmonikids_11.png" alt="User Flow" class="img-half scale-up">
+        </div>
+    </section>
+
+    <section class="final-design-section">
+        <div class="label-black-box rect-190">Final Design</div>
+        <h2 class="bg-title product-design-text">Product Design</h2>
+        <div class="full-width-wrap">
+            <img src="img/harmonikids_12.jpg" alt="Final Design" class="img-full-width">
+        </div>
+    </section>
+
+    <section class="feature-detail-section">
+        <div class="detail-container">
+            <img src="img/harmonikids_13.png" alt="Feature Detail" class="detail-img-13">
+            <p class="detail-desc animated-text">
+                不同於以往由上而下的辨識方式，提升美觀性，同時不阻礙視線。
+            </p>
+        </div>
+    </section>
+
+    <section class="aigc-section">
+        <div class="aigc-content-container">
+            <div class="aigc-image-wrapper">
+                <img src="img/harmonikids_14.png" alt="AIGC 繪本" class="aigc-main-img">
+                <div class="aigc-text-box">
+                    <h2 class="aigc-title">AIGC 繪本</h2>
+                    <p class="aigc-body animated-text">
+                        AI生成故事書首先訪談了兒童，蒐集其對音樂、故事類型的喜好，依據兒童的喜好編寫一系列的腳本故事，將每頁的畫面故事轉為提示詞，輸入至Midjourney，大致使用sref定義風格，cref延續角色特徵，從而生成一系列風格相同的繪本故事。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ui-design-section">
+        <h2 class="bg-title white-text">UI Design</h2>
+        
+        <div class="img-margin-wrap mt-46">
+            <img src="img/harmonikids_15.png" alt="UI 1" class="img-ui-15">
+        </div>
+
+        <div class="btn-wrap-right">
+            <a href="https://harmonikids-game.vercel.app" target="_blank" class="hollow-btn-app">To App</a>
+        </div>
+
+        <div class="img-margin-wrap mt-60">
+            <img src="img/harmonikids_16.png" alt="UI 2" class="img-ui-16">
+        </div>
+
+        <div class="next-proj-wrap">
+            <a href="buzzaway.html">
+                <img src="img/harmonikids_17.png" alt="Next Project" class="next-btn">
+            </a>
+        </div>
+    </section>
+
+    <script>
+        function handleScroll() {
+            const items = document.querySelectorAll('.scroll-fade, .bounce-item, .scale-up');
+            items.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top <= window.innerHeight * 0.85) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', handleScroll);
+
+        const animatedTexts = document.querySelectorAll('.animated-text');
+        animatedTexts.forEach(block => {
+            const textContent = block.textContent.trim();
+            block.textContent = '';
+            textContent.split('').forEach((char, index) => {
+                const span = document.createElement('span');
+                span.textContent = char;
+                span.style.animationDelay = `${index * 0.05}s`;
+                block.appendChild(span);
+            });
+        });
+
+        const slider = document.getElementById('personaSlider');
+        const dots = document.querySelectorAll('.square-dot');
+        if (slider) {
+            slider.addEventListener('scroll', () => {
+                const index = Math.round(slider.scrollLeft / slider.offsetWidth);
+                dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+            });
+        }
+        function jumpTo(index) {
+            if (slider) {
+                slider.scrollTo({ left: index * slider.offsetWidth, behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+</html>

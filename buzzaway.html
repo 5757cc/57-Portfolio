@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Buzzaway Integration</title>
+    <link rel="stylesheet" href="buzzaway.css">
+</head>
+<body>
+
+    <nav class="tab-bar">
+        <ul>
+            <li>
+                <a href="index.html" class="tab">
+                    <div class="nav---link-bg-square"></div>
+                    WORKS
+                </a>
+            </li>
+            <li>
+                <a href="About.html" class="tab">
+                    <div class="nav---link-bg-square"></div>
+                    ABOUT
+                </a>
+            </li>
+            <li>
+                <a href="contact.html" class="tab">
+                    <div class="nav---link-bg-square"></div>
+                    CONTACT
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="ui-design-section">
+        <div class="buzzaway-content">
+            <img src="img/buzzaway_1.png" alt="Buzzaway 1" class="img-buzz-1">
+            
+            <div class="img-right-wrap">
+                <div class="buzz2-container">
+                    <img src="img/buzzaway_2.jpg" alt="Buzzaway 2" class="img-buzz-2">
+                </div>
+            </div>
+
+            <div class="text-block-1-wrap">
+                <p class="text-block-1 scroll-text">
+                    根據衛福部資料，白線斑蚊及埃及斑蚊是登革熱傳播媒介，市區以下水道涵箱成為主要孳生地，因此提出新型水溝蓋設計BuzzAway防蚊蓋，其創新設計點以簡易迷宮結構阻隔其進出，使病媒蚊難以飛出。
+                </p>
+            </div>
+
+            <div class="img-row-3-4">
+                <img src="img/buzzaway_3.png" alt="Buzzaway 3" class="img-buzz-3 scroll-trigger">
+                <img src="img/buzzaway_4.png" alt="Buzzaway 4" class="img-buzz-4 scroll-trigger">
+            </div>
+
+            <div class="img5-row-wrap">
+                <img src="img/buzzaway_5.jpg" alt="Buzzaway 5" class="img-buzz-5">
+                <p class="text-block-2 scroll-text">
+                    結合IoT水位偵測系統，讓使用者能夠隨時打開手機，接收登革熱各種情報，並即時確認病媒蚊聚集區域，切換到雨量偵測也能時刻讓民眾注意相關資訊。
+                </p>
+            </div>
+        </div>
+
+        <div class="next-proj-wrap">
+            <a href="lamarzocco&disney.html">
+                <img src="img/Next Project.png" alt="Next Project" class="next-btn">
+            </a>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -100px 0px',
+                threshold: 0.5 
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.scroll-trigger, .scroll-text').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+
+</body>
+</html>

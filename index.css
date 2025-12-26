@@ -1,0 +1,135 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background-color: #f8f8f8;
+}
+
+/* --- 導航欄 (Fixed 置中) --- */
+.tab-bar {
+    position: fixed; 
+    top: 0;
+    width: 100%;
+    background: transparent;
+    padding: 1em 0;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.tab-bar ul {
+    list-style-type: none;
+    margin: 0; padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.tab-bar ul li { margin: 0 1em; position: relative; }
+
+.tab-bar ul li a {
+    position: relative; 
+    overflow: hidden;
+    color: rgb(49, 49, 49);
+    text-decoration: none;
+    padding: 0.5em 1em;
+    z-index: 2;
+    display: block;
+    transition: color 0.3s;
+}
+
+.nav---link-bg-square {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(238, 212, 165);
+    transform: translate3d(-50%, -50%, 0) scale3d(0, 0, 1) rotateZ(0deg);
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    z-index: 1;
+}
+
+.tab-bar ul li a:hover .nav---link-bg-square {
+    transform: translate3d(-50%, -50%, 0) scale3d(1.2, 1.2, 1) rotateZ(10deg);
+    background-color: #ff7f5f80;
+}
+
+/* --- 螺旋區域 --- */
+#animation-container {
+    width: 100%;
+    height: 320px; 
+    background-color: #f8f8f8;
+    overflow: hidden;
+    margin-top: 70px; 
+}
+
+/* --- 卡片區塊 --- */
+.main-content-wrapper {
+    padding: 0px 20px 80px 20px; 
+    margin-top: 20px; 
+}
+
+.container4 {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    max-width: calc(100% - 160px); 
+    width: 100%; 
+    margin: 0 auto; 
+}
+
+.card {
+    display: block; 
+    text-decoration: none; 
+    width: 100%; 
+    max-width: 380px; 
+    height: 250px; 
+    overflow: hidden; 
+    margin: 14px; 
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(255, 127, 95, 0.5); 
+    transform: translateX(-100%); 
+    transition: transform 0.4s ease-out; 
+    z-index: 4; 
+}
+
+.card:hover::after { transform: translateX(0); }
+
+.card img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: 0.35s;
+    display: block;
+}
+
+.card .text {
+    position: absolute;
+    bottom: 24px; right: 24px; 
+    z-index: 5; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; 
+    opacity: 0; 
+    transition: opacity 0.3s ease-in;
+}
+
+.card:hover .text { opacity: 1; }
+
+.card .text p {
+    font-size: 16px; 
+    color: white; 
+    margin: 2px 0; 
+    line-height: 1.2;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Daily Necessities</title>
+    <link rel="stylesheet" href="dailynecessities.css">
+</head>
+<body>
+
+    <nav class="tab-bar">
+        <ul>
+            <li><a href="index.html" class="tab"><div class="nav---link-bg-square"></div>WORKS</a></li>
+            <li><a href="About.html" class="tab"><div class="nav---link-bg-square"></div>ABOUT</a></li>
+            <li><a href="contact.html" class="tab"><div class="nav---link-bg-square"></div>CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <main class="content-wrapper">
+        <img src="img/dailynecessities_1.jpg" alt="" class="full-img">
+
+        <div class="overlap-container">
+            <img src="img/dailynecessities_2.png" alt="" class="full-img">
+            <div class="reveal-text text-block-1">
+                以奇特有曲線的造型呈現奇幻感，材質選用木頭跟陶，並運用不同色彩展現鮮豔活潑。一圈一圈的可以根據杯子大小，靠在杯緣上榨汁，以組裝的方式，讓使用的人好清洗、收納。
+            </div>
+        </div>
+
+        <img src="img/dailynecessities_3.jpg" alt="" class="full-img no-gap">
+
+        <div class="overlap-container">
+            <img src="img/dailynecessities_4.png" alt="" class="full-img">
+            <div class="reveal-text text-block-2">
+                為小朋友而設計，並聯想到溜滑梯，滑下吐司的概念設計，可愛的大象外型，讓小朋友在烤土司的同時也能獲得樂趣。
+            </div>
+        </div>
+
+        <div class="pill-section">
+            <img src="img/dailynecessities_5.png" alt="" class="full-img">
+            <div class="reveal-text text-block-3">
+                按壓式藥盒，使用能一次剛好倒出一顆藥丸的設計，讓使用者服用藥丸時，不用再小心翼翼的倒出藥丸，隨時可以輕鬆倒取藥丸。
+            </div>
+        </div>
+    </main>
+
+    <section class="ui-design-section">
+        <div class="next-proj-wrap">
+            <a href="harmonikids.html">
+                <img src="img/Next Project.png" alt="Next Project" class="next-btn">
+            </a>
+        </div>
+    </section>
+
+    <script>
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-text').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

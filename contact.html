@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+
+    <nav class="tab-bar">
+        <ul>
+            <li>
+                <a href="index.html" class="tab">
+                    <div class="nav---link-bg-square"></div>
+                    WORKS
+                </a>
+            </li>
+            <li>
+                <a href="About.html" class="tab">
+                    <div class="nav---link-bg-square"></div>
+                    ABOUT
+                </a>
+            </li>
+            <li>
+                <a href="contact.html" class="tab">
+                    <div class="nav---link-bg-square"></div>
+                    CONTACT
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="page-wrapper">
+        <main class="content-container">
+            <div class="intro-group">
+                <h1 class="title-hi">Hi,<br>I’m 57</h1>
+                <div class="emoji-wrapper">
+                    <span class="rotating-flower">✿</span> ᵔ ᵔ) /
+                </div>
+            </div>
+
+            <div class="contact-group">
+                <h2 class="contact-headline">Contact me now!</h2>
+                <div class="email-container" onclick="copyEmailText()">
+                    <span id="target-email">serena29852769@gmail.com</span>
+                    <div class="copy-tooltip">Copy</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function copyEmailText() {
+            const email = document.getElementById('target-email').innerText;
+            navigator.clipboard.writeText(email).then(() => {
+                const tooltip = document.querySelector('.copy-tooltip');
+                tooltip.innerText = 'Done!';
+                setTimeout(() => { tooltip.innerText = 'Copy'; }, 1000);
+            });
+        }
+    </script>
+
+</body>
+</html>

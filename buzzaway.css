@@ -1,0 +1,200 @@
+/* ======================
+    載入自訂字體
+====================== */
+@font-face {
+    font-family: 'ChironHeiHK-Inner';
+    src: url('Fonts/ChironHeiHK-Text-L.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ======================
+    基礎設定
+====================== */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background-color: #f8f8f8;
+    overflow-x: hidden;
+}
+
+/* ======================
+    導航欄 (根據你提供的樣式修正)
+====================== */
+.tab-bar {
+    position: fixed; 
+    top: 0;
+    width: 100%;
+    background: transparent;
+    padding: 1em 0;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.tab-bar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.tab-bar ul li {
+    margin: 0 1em;
+    position: relative;
+}
+
+.tab-bar ul li a {
+    position: relative; 
+    overflow: hidden;
+    color: rgb(49, 49, 49);
+    text-decoration: none;
+    padding: 0.5em 1em;
+    z-index: 2;
+    display: block;
+    transition: color 0.3s;
+}
+
+/* 背景方塊效果 */
+.nav---link-bg-square {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(238, 212, 165);
+    transform: translate3d(-50%, -50%, 0) scale3d(0, 0, 1) rotateZ(0deg);
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    z-index: 1;
+}
+
+.tab-bar ul li a:hover .nav---link-bg-square {
+    transform: translate3d(-50%, -50%, 0) scale3d(1.2, 1.2, 1) rotateZ(10deg);
+    background-color: #ff7f5f80; /* 你提供的 Hover 顏色 */
+}
+
+.tab-bar ul li a:active .nav---link-bg-square {
+    transform: translate3d(-50%, -50%, 0) scale3d(1, 1, 1) rotateZ(0deg);
+    background-color: #f9c0b191;
+}
+
+/* ======================
+    內容排版
+====================== */
+.ui-design-section {
+    width: 100%;
+    padding-bottom: 80px; 
+    display: flex;
+    flex-direction: column;
+}
+
+.buzzaway-content {
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+}
+
+.img-buzz-1 { width: 20%; margin-left: 80px; }
+
+.img-right-wrap { display: flex; justify-content: flex-end; margin-top: 60px; }
+.buzz2-container { width: 75%; }
+.img-buzz-2 { width: 100%; height: auto; }
+
+/* 第一段內文：靠左 80px，套用昭源黑體 */
+.text-block-1-wrap {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 80px;
+    margin-top: 144px; 
+}
+.text-block-1 {
+    font-family: 'ChironHeiHK-Inner', sans-serif;
+    width: 458px;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #444;
+    text-align: justify;
+}
+
+/* 3 & 4 容器：往上移 60px (原 226px -> 166px) */
+.img-row-3-4 {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    margin-top: 166px; 
+    padding: 0 110px 0 136px;
+}
+
+/* 圖片動畫：極慢速 */
+.img-buzz-3 {
+    width: 42%; opacity: 0; transform: scale(0.6) translateY(50px);
+    transition: opacity 2.5s cubic-bezier(0.16, 1, 0.3, 1), transform 5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.img-buzz-4 {
+    width: 42%; margin-top: 2px; opacity: 0; clip-path: inset(0 0 100% 0);
+    transition: opacity 1.5s ease-out, clip-path 6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.img-buzz-3.is-visible { opacity: 1; transform: scale(1) translateY(0); }
+.img-buzz-4.is-visible { opacity: 1; clip-path: inset(0 0 0 0); }
+
+/* 5. 圖片5 與 第二段內文 */
+.img5-row-wrap {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 60px;
+}
+.img-buzz-5 { width: 50%; height: auto; }
+.text-block-2 {
+    font-family: 'ChironHeiHK-Inner', sans-serif;
+    width: 346px;
+    margin-left: 60px;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #444;
+}
+
+/* 文字逐行動畫 */
+.scroll-text {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0); 
+    transition: clip-path 3s cubic-bezier(0.4, 0, 0.2, 1), opacity 1s ease;
+}
+.scroll-text.is-visible {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+}
+
+/* ======================
+    Next Project 按鈕 (根據你提供的樣式)
+====================== */
+.next-proj-wrap {
+    margin-top: 100px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 80px; 
+}
+
+.next-btn {
+    cursor: pointer;
+    transition: 0.3s;
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.next-btn:hover {
+    transform: translateX(5px);
+}
+
+/* ======================
+    響應式處理
+====================== */
+@media (max-width: 1024px) {
+    .next-proj-wrap { padding-right: 20px; }
+    .tab-bar ul li { margin: 0 0.5em; }
+    .img-row-3-4 { flex-direction: column; align-items: center; margin-top: 80px; padding: 0 20px; }
+    .img-buzz-3, .img-buzz-4 { width: 90%; margin-top: 30px; }
+    .text-block-1-wrap { padding-left: 20px; }
+    .text-block-1, .text-block-2 { width: 90%; }
+}

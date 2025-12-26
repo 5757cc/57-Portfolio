@@ -1,0 +1,167 @@
+/* ======================
+    Font & Base
+====================== */
+@font-face {
+    font-family: "Chiron Hei HK Text";
+    src: url("fonts/ChironHeiHK-Text-L.otf") format("opentype");
+}
+@font-face {
+    font-family: "Chiron Hei HK Text Medium";
+    src: url("fonts/ChironHeiHK-Text-M.otf") format("opentype");
+}
+
+html, body {
+    margin: 0; padding: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding-top: 31px;
+}
+
+/* ======================
+    Navigation
+====================== */
+.tab-bar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 1em 0; }
+.tab-bar ul { list-style: none; display: flex; justify-content: center; margin: 0; padding: 0; }
+.tab-bar ul li { margin: 0 1em; position: relative; }
+.tab-bar ul li a { position: relative; color: rgb(49, 49, 49); text-decoration: none; padding: 0.5em 1em; z-index: 2; display: block; overflow: hidden; }
+.nav---link-bg-square {
+    position: absolute; top: 50%; left: 50%; width: 100%; height: 100%;
+    background-color: rgb(238, 212, 165); z-index: 1;
+    transform: translate3d(-50%, -50%, 0) scale3d(0, 0, 1) rotateZ(0deg);
+    transition: transform 0.3s ease;
+}
+.tab-bar ul li a:hover .nav---link-bg-square { transform: translate3d(-50%, -50%, 0) scale3d(1.2, 1.2, 1) rotateZ(10deg); background-color: #ff7f5f80; }
+
+/* ======================
+    Hero & Text
+====================== */
+.main-visual { width: 100%; display: block; }
+.sub-visual-group { display: flex; align-items: flex-end; gap: 180px; margin-top: 2rem; margin-left: 5vw; }
+.sub-visual.gif { width: 50%; max-width: 600px; }
+.sub-visual.graphic { width: 35%; max-width: 420px; }
+
+/* 僅在此處修改字體為 Chiron Hei HK Text */
+.text-section { 
+    margin-top: 2rem; 
+    max-width: 774px; 
+    margin-left: auto; 
+    margin-right: 5vw; 
+    font-family: "Chiron Hei HK Text", sans-serif; 
+    font-size: 1.1rem; 
+    line-height: 1.9; 
+    color: #575757; 
+}
+
+.animated-text span { opacity: 0; display: inline-block; transform: translateX(-20px); animation: fadeInLeft 0.5s forwards; }
+@keyframes fadeInLeft { to { opacity: 1; transform: translateX(0); } }
+
+/* ======================
+    Background & Research (已修正 80px 邊距)
+====================== */
+.info-section { margin-top: 8rem; padding-bottom: 5rem; }
+.title-group { margin-left: 74px; }
+.bg-title { font-size: 2rem; font-weight: bold; color: #000000; margin: 0; }
+.bg-subtitle { font-family: "Chiron Hei HK Text Medium"; font-size: 1.4rem; color: #5CA09F; margin: 16px 0 0 0; }
+.centered-image-container { width: 100%; display: flex; justify-content: center; margin-top: 3rem; }
+.full-width-img { max-width: 90%; height: auto; }
+
+.research-section {
+    width: 100%; background-color: #DDC6B2;
+    padding: 80px 0; display: flex; flex-direction: column; align-items: center; box-sizing: border-box;
+}
+.res-title { font-size: 2rem; font-weight: bold; color: #FFFFFF; margin-bottom: 60px; text-align: center; }
+.interview-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 1200px; }
+.bounce-item { width: 100%; max-width: 500px; opacity: 0; transform: scale(0.5); transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.bounce-item.visible { opacity: 1; transform: scale(1); }
+
+.persona-mt { margin-top: 80px; margin-bottom: 60px; }
+.persona-outer { width: 100%; display: flex; flex-direction: column; align-items: center; }
+
+/* 5.png, 6.png 修正：左右邊距 80px */
+.persona-slider { 
+    width: calc(100% - 160px); 
+    max-width: 1224px; 
+    aspect-ratio: 1224 / 746;
+    display: flex; 
+    overflow-x: auto; 
+    scroll-snap-type: x mandatory; 
+    scrollbar-width: none; 
+}
+.persona-slider::-webkit-scrollbar { display: none; }
+.persona-slide-img { flex: 0 0 100%; width: 100%; height: auto; scroll-snap-align: center; object-fit: contain; }
+
+.indicator-group { display: flex; gap: 12px; margin-top: 24px; }
+.square-dot { width: 10px; height: 10px; background-color: rgba(255, 255, 255, 0.4); cursor: pointer; }
+.square-dot.active { background-color: #FFFFFF; }
+
+/* ======================
+    Common Components
+====================== */
+.label-black-box { width: 220px; height: 50px; background-color: #000; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1rem; margin-left: 74px; }
+.rect-190 { width: 190px; }
+
+/* ======================
+    Design Process Section
+====================== */
+.design-process-section { margin-top: 60px; width: 100%; }
+.sub-title-center { margin-top: 60px; text-align: center; font-size: 2rem; font-weight: bold; color: #000; }
+.img-center-wrap { margin-top: 60px; display: flex; justify-content: center; width: 100%; }
+.img-half { width: 50%; height: auto; display: block; }
+
+/* ======================
+    Final Design Section
+====================== */
+.final-design-section { margin-top: 80px; width: 100%; padding-bottom: 40px; }
+.product-design-text { margin-left: 74px; margin-top: 46px; color: #000; }
+.full-width-wrap { margin-top: 46px; width: 100%; }
+.img-full-width { width: 100%; height: auto; display: block; }
+
+/* ======================
+    Feature Detail
+====================== */
+.feature-detail-section { margin-top: 10px; width: 100%; position: relative; padding-bottom: 60px; }
+.detail-img-13 { width: 60%; margin-left: 100px; display: block; height: auto; }
+.detail-desc { position: absolute; right: 76px; bottom: 60px; font-family: "Chiron Hei HK Text"; font-size: 1.1rem; line-height: 1.9; color: #575757; margin: 0; max-width: 400px; }
+
+/* ======================
+    AIGC Section
+====================== */
+.aigc-section { width: 100%; background: linear-gradient(to bottom, #474747 0%, #434343 100%); padding-top: 60px; display: flex; flex-direction: column; }
+.aigc-content-container { width: 100%; display: flex; justify-content: center; }
+.aigc-image-wrapper { position: relative; width: fit-content; }
+.aigc-main-img { display: block; max-width: 100%; height: auto; }
+.aigc-text-box { position: absolute; right: 80px; bottom: 60px; color: #FFFFFF; text-align: left; z-index: 5; }
+.aigc-title { font-family: "Chiron Hei HK Text Medium"; font-size: 1.3rem; margin: 0 0 10px 0; }
+.aigc-body { font-family: "Chiron Hei HK Text"; font-size: 1.1rem; width: 778px; line-height: 1.9; margin: 0; }
+
+/* ======================
+    UI Design Section (已修正 80px 邊距)
+====================== */
+.ui-design-section { width: 100%; background: linear-gradient(to bottom, #434343 0%, #737373 57%, #5B5B5B 100%); padding-top: 80px; padding-bottom: 80px; display: flex; flex-direction: column; }
+.white-text { color: #FFFFFF !important; margin-left: 74px; }
+.mt-46 { margin-top: 46px; }
+
+.img-margin-wrap { display: flex; justify-content: center; width: 100%; }
+
+/* 15.png, 16.png 修正：左右邊距 80px */
+.img-ui-15 { width: calc(100% - 160px); height: auto; display: block; object-fit: contain; }
+.img-ui-16 { width: calc(100% - 160px); height: auto; display: block; object-fit: contain; }
+
+.btn-wrap-right { display: flex; justify-content: flex-end; padding-right: 80px; margin-top: 30px; }
+.hollow-btn-app { width: 111px; height: 44px; border: 1px solid #FFFFFF; color: #FFFFFF; text-decoration: none; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+.hollow-btn-app:hover { background-color: rgba(255,255,255,0.1); }
+
+.next-proj-wrap { margin-top: 100px; display: flex; justify-content: flex-end; padding-right: 80px; }
+.next-btn { cursor: pointer; transition: 0.3s; }
+
+/* 動畫基礎 */
+.scale-up { opacity: 0; transform: scale(0.8); transition: 1.2s ease-out; }
+.scale-up.visible { opacity: 1; transform: scale(1); }
+.scroll-fade { opacity: 0; transform: translateY(30px); transition: 1s ease-out; }
+.scroll-fade.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 1024px) {
+    .persona-slider, .img-ui-15, .img-ui-16 { width: calc(100% - 40px); }
+    .btn-wrap-right, .next-proj-wrap { padding-right: 20px; }
+}

@@ -1,0 +1,141 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background-color: #f8f8f8;
+}
+
+/* --- 導航欄 (Tab Bar) 基礎樣式 --- */
+.tab-bar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: transparent;
+    padding: 1em 0;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.tab-bar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.tab-bar ul li {
+    margin: 0 1em;
+    position: relative;
+}
+
+.tab-bar ul li a {
+    position: relative;
+    overflow: hidden;
+    color: rgb(49, 49, 49);
+    text-decoration: none;
+    padding: 0.5em 1em;
+    z-index: 2;
+    display: block;
+    transition: color 0.3s;
+}
+
+/* --- 背景方塊效果 (還原原始設定) --- */
+.nav---link-bg-square {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(238, 212, 165);
+    transform: translate3d(-50%, -50%, 0) scale3d(0, 0, 1) rotateZ(0deg);
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    z-index: 1;
+}
+
+.tab-bar ul li a:hover .nav---link-bg-square {
+    transform: translate3d(-50%, -50%, 0) scale3d(1.2, 1.2, 1) rotateZ(10deg);
+    background-color: #ff7f5f80;
+}
+
+.tab-bar ul li a:active .nav---link-bg-square {
+    transform: translate3d(-50%, -50%, 0) scale3d(1, 1, 1) rotateZ(0deg);
+    background-color: #f9c0b191;
+}
+
+/* --- 內容區域佈設 --- */
+
+.content-wrapper {
+    margin-top: 40px; /* 往下 60px */
+}
+
+/* 圖 1 */
+.img-container-1 {
+    padding: 0 60px;
+    box-sizing: border-box;
+}
+.about-1-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 黑色區域與圖 2 */
+.black-section {
+    width: 100%;
+    height: 646px;
+    background-color: black;
+    margin-top: 80px; /* 圖 1、2 間距 80px */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.pop-img {
+    max-width: calc(100% - 340px); /* 左右離邊緣 170px */
+    max-height: 90%;
+    object-fit: contain;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+.pop-img.animate {
+    animation: suddenAppear 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes suddenAppear {
+    0% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.pop-img:hover {
+    transform: scale(1.1); /* Hover 彈跳 */
+}
+
+/* Skills 標題 */
+.skills-title {
+    margin: 60px 0 0 60px; /* 下方 60px，左邊邊緣 60px */
+    font-size: 32px;
+    font-weight: bold;
+    color: #313131;
+}
+
+/* 圖 3 置中容器 */
+.img-container-3 {
+    margin-top: 120px; /* 下方 120px */
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.about-3-img {
+    width: 60%; /* 尺寸縮小 40% */
+    height: auto;
+    display: block;
+    margin-bottom: 160px; /* 底部空出 160px */
+}
